@@ -6,6 +6,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 
 use Firebase\JWT\JWT;
 
+use App\Models\Utilisateur;
 
 class UserController
 {
@@ -55,25 +56,37 @@ class UserController
     {
         global $entityManager;
         $user = $request->getParsedBody();
+        $user = json_decode($user["client"], true);
 
         $result = [
             "success" => true,
             "user" => $user
         ];
 
-        $utilisateur = new utilisateur;
-        $utilisateur->setNom($user.nom);
-        $utilisateur->setPrenom($user.prenom);
-        $utilisateur->setAdresse($user.adresse);
-        $utilisateur->setCodePostal($user.codePostal);
-        $utilisateur->setVille($user.ville);
-        $utilisateur->setTelephone($user.telephone);
-        $utilisateur->setMail($user.mail);
-        $utilisateur->setCivilite($user.civilite);
-        $utilisateur->setLogin($user.login);
-        $utilisateur->setPassword($user.password);
-        $entityManager->persist($utilisateur);
-        $entityManager->flush();
+        $entityManager->getConnection()->beginTransaction();
+
+        try{
+            $utilisateur = new utilisateur;
+            $utilisateur->setNom($user["nom"]);
+            $utilisateur->setPrenom($user["prenom"]);
+            $utilisateur->setAdresse($user["adresse"]);
+            $utilisateur->setCodePostal($user["codePostal"]);
+            $utilisateur->setVille($user["ville"]);
+            $utilisateur->setTelephone($user["telephone"]);
+            $utilisateur->setMail($user["mail"]);
+            $utilisateur->setCivilite($user["civilite"]);
+            $utilisateur->setLogin($user["login"]);
+            $utilisateur->setPassword($user["password"]);
+            $entityManager->persist($utilisateur);
+            $entityManager->flush();
+            $entityManager->getConnection()->commit();
+        }
+        catch(Exception $excep){
+            $entityManager->getConnection()->rollback();
+            throw $excep;
+        }
+
+        
 
         $response->getBody()->write(json_encode($result));
         return $response->withHeader("Content-Type", "application/json");

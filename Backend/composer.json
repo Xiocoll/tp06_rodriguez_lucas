@@ -20,7 +20,7 @@
             "App\\": "app/"
         },
         "classmap":
-            ["src/"]
+            ["App\\Models"]
         
     }
 }

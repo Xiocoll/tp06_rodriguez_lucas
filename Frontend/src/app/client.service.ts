@@ -17,7 +17,7 @@ export class ClientService {
   addClient(Client: Client) {
     let body: URLSearchParams = new URLSearchParams();
     body.set('client', JSON.stringify(Client));
-    return this.httpClient.post<{ user: { client: string } }>(
+    return this.httpClient.post<Client>(
       environment.urlServer + '/user/register',
       body.toString(),
       {

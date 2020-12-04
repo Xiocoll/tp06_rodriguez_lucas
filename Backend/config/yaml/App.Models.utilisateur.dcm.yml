@@ -1,4 +1,4 @@
-utilisateur:
+App\Models\utilisateur:
     type: entity
     table: utilisateur
     id:
@@ -10,7 +10,7 @@ utilisateur:
             id: true
             column: id
             generator:
-                strategy: SEQUENCE
+                strategy: IDENTITY
     fields:
         nom:
             type: string
@@ -45,7 +45,7 @@ utilisateur:
         codePostal:
             type: string
             nullable: true
-            length: 6
+            length: 50
             options:
                 fixed: false
         ville:
@@ -57,7 +57,7 @@ utilisateur:
         telephone:
             type: string
             nullable: true
-            length: 10
+            length: 50
             options:
                 fixed: false
         mail:
@@ -69,7 +69,7 @@ utilisateur:
         civilite:
             type: string
             nullable: true
-            length: 3
+            length: 50
             options:
                 fixed: false
     lifecycleCallbacks: {  }

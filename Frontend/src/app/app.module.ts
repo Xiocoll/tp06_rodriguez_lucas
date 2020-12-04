@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 
 import { FormControl } from "@angular/forms";
 import { AppComponent } from "./app.component";
@@ -16,6 +16,7 @@ import { ProduitService } from "./produit.service";
 import { AccueilComponent } from "./accueil/accueil.component";
 import { NgxsModule } from '@ngxs/store';
 import { ProduitState } from "./shared/states/produit-state";
+import { ApiHttpInterceptor } from './api-http-interceptor';
 
 const appRoutes: Routes = [
   { path: "clients", component: ClientListComponent },
@@ -62,6 +63,8 @@ const appRoutes: Routes = [
     AccueilComponent
   ],
   bootstrap: [AppComponent],
-  providers: [ClientService, ProduitService]
+  providers: [ClientService, ProduitService, {
+    provide: HTTP_INTERCEPTORS,    useClass: ApiHttpInterceptor,     multi: true
+    }]
 })
 export class AppModule {}

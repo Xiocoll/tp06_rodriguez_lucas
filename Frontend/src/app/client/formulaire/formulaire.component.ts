@@ -54,8 +54,11 @@ export class FormulaireComponent implements OnInit {
       formValue['password2']
     );
     if(newClient.password === newClient.password2){
-      this.clientService.addClient(newClient);
-      this.router.navigate(['/clients']);  
+      this.clientService.addClient(newClient).subscribe((test) => {
+      //  this.router.navigate(['/clients']); 
+        alert("Ajout client");
+      });
+       
     } else {
       console.log("mauvais MDP");
     }
