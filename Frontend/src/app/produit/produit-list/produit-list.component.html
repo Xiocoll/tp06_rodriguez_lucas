@@ -1,0 +1,17 @@
+<h3>Produits: </h3>
+
+<label>Nom Produit: </label>
+<input id="nom" [appError]="getValidationNom()" [(ngModel)]="searchNom" (ngModelChange)="onSearchTermChange()">
+<br>
+<button type="submit"  class="btn btn-dark" [(ngModel)]="searchType" (click)="onClickType(searchFruit)">Fruit</button>
+<button type="submit"  class="btn btn-dark" [(ngModel)]="searchType" (click)="onClickType(searchLegume)">Légume</button>
+<button type="submit"  class="btn btn-dark" (click)="ngOnInit()">Tout</button>
+
+<ul class="list-group">
+	<li class="list-group-item" *ngFor="let produit of produits | async">
+		<p><a [routerLink]="['./detail',produit.numero]">{{ produit.numero }} - {{ produit.nom }}</a></p>
+		<button type="submit" (click)="onClickAdd(produit)">Ajouter Panier</button>
+
+
+	</li>
+</ul>

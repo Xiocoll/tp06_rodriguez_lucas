@@ -1,0 +1,61 @@
+<h3>Formulaire: </h3>
+
+<form  name="myForm" [formGroup]="clientForm" (ngSubmit)="onSubmitForm()">
+	<div>
+		<div>
+			<label class="control-label col-sm-2">Votre nom</label>
+			<input type="text" id="nom" name="nom" class="form-control" formControlName="nom"/>
+		
+			<label class="control-label col-sm-2">Votre prenom</label>
+			<input type="text" name="prenom" class="form-control" formControlName="prenom"/>
+      
+		</div>
+	</div>
+		<p>
+			<label class="control-label col-sm-2">Votre adresse</label>
+			<input type="text" name="adresse" class="form-control" formControlName="adresse"/>
+		
+			<label class="control-label col-sm-2">Votre code postal</label>
+			<input type="text" name="cp" class="form-control" formControlName="codePostal"  />
+		</p>
+		<p>
+			<label class="control-label col-sm-2">Votre ville</label>
+			<input type="text" name="ville" class="form-control" formControlName="ville"  />
+		</p>
+		<p>
+			<label class="control-label col-sm-2">Votre téléphone</label>
+			<input type="tel" id="phone" name="phone" maxlength="10" placeholder="0000000000" class="form-control" formControlName="telephone"  />
+		</p>
+			<div class="input-group"><label>Votre email :</label>
+				<div class="input-group-pretend">
+					<span class="input-group-text">@</span>
+				</div>
+				<input type="email" name="email" placeholder="mail@mail.com" class="form-control" formControlName="mail"  />
+			</div>
+		
+			<label class="control-label col-sm-2">Votre civilite</label>
+			
+			<input type="radio" id="civil1" name="civilite" value="M." formControlName="civilite">
+			<label for="contactChoice1">M.</label>
+
+			<input type="radio" id="civil1" name="civilite" value="Mme." formControlName="civilite">
+			<label for="contactChoice2">Mme.</label>
+      
+		<br><br>
+		<p>
+			<label class="control-label col-sm-2">Votre login</label>
+			<input type="text" name="log" class="form-control" formControlName="login"  />
+		</p>
+		<p>
+			<label class="control-label col-sm-2">Votre password</label>
+			<input type="password" id="password" name="password" class="form-control" placeholder="MDP" formControlName="password"  />
+			<input type="password" id="password2" name="password2" class="form-control" placeholder="Verification MDP" formControlName="password2"/>
+			
+		</p>
+		
+		<p>
+			<button type="submit"  class="btn btn-dark" [disabled]="clientForm.invalid">Terminer</button>
+		</p>
+		
+		
+	</form>

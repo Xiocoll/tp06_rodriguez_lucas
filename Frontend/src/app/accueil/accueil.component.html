@@ -1,0 +1,23 @@
+<p>
+Bienvenu dans l'accueil
+</p>
+
+<form  name="myForm" [formGroup]="authForm" (ngSubmit)="onSubmitForm()">
+    <div>
+        <div>
+            <label>Login</label>
+            <input type="text" id="login" formControlName="login" class="form-control"/>
+        
+            <label>Password</label>
+            <input type="text"  id="password" formControlName="password" class="form-control" />
+
+        
+        </div>
+        
+    </div>
+    <br>
+    <p>
+        <button type="submit"  class="btn btn-dark" >S'authentifier</button>
+    </p>
+
+</form>

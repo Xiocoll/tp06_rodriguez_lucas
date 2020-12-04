@@ -1,0 +1,9 @@
+
+<p>Produit selectionné: </p>
+
+<div *ngIf="prod | async; let produit">
+		<h3>{{ produit.nom }}</h3>
+    <p>Type: {{produit.type}}</p>
+
+    <button type="submit" (click)="onClickAdd(produit)">Ajouter Panier</button>
+</div>

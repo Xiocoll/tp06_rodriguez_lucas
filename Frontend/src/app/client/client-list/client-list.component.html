@@ -1,0 +1,18 @@
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let client of clients">
+    <h3>{{ client.civilite }} {{ client.nom }} {{ client.prenom }}</h3>
+    <p> {{ client.telephone | phona }} </p>
+
+    
+    
+    <p>
+      {{ client.adresse }} {{ client.codePostal }}
+      <br>
+      {{ client.ville }}
+    </p>
+    
+    <p>{{ client.mail }}</p>
+    <p>Login: {{client.login}}/ Password: {{client.password}}</p>
+
+  </li>
+</ul>

@@ -1,0 +1,6 @@
+[
+  {"numero":"1", "nom":"fraise", "type":"fruit"},
+  {"numero":"2", "nom":"pomme", "type":"fruit"},
+  {"numero":"3", "nom":"poire", "type":"fruit"},
+  {"numero":"4", "nom":"patate", "type":"legume"}
+]
